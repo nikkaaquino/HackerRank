@@ -1,0 +1,27 @@
+
+digit_input = int(input().strip())
+numbers_input = [int(x) for x in input().strip().split(' ')]
+numbers_input.sort()
+
+mean = sum(numbers_input)/len(numbers_input)
+
+mid = len(numbers_input)//2
+
+mode = numbers_input[0]
+count = 0
+
+if len(numbers_input) % 2 != 0:
+    median = numbers_input[mid]
+else:
+    median = (numbers_input[mid] + numbers_input[mid - 1])/2
+    
+for counter in numbers_input:
+    if numbers_input.count(counter) > count:
+        count = numbers_input.count(counter)
+        mode = counter
+    elif numbers_input.count(counter) == count:
+        mode = min(counter, mode)
+    
+print(round(mean, 1))
+print(round(median, 1))
+print(mode)
